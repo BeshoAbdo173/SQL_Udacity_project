@@ -1,0 +1,11 @@
+/*Query 1 - Who is the best selling Employee? and what is the total number of sales he made it? */
+SELECT e.FirstName First_nm,
+       e.LastName Last_nm,
+       SUM(i.total) tot
+FROM Invoice i
+JOIN Customer c ON i.CustomerId = c.CustomerId
+JOIN Employee e ON e.EmployeeId = c.SupportRepId
+GROUP BY 1,
+         2
+ORDER BY 3 DESC
+LIMIT 1

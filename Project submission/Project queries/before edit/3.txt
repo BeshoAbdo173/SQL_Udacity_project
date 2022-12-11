@@ -1,0 +1,9 @@
+/*Query 3 - what is the least value spent by a customer and who spent it? */
+
+SELECT c.FirstName ,c.LastName, SUM(i.Total) as Least_value
+FROM Invoice i
+JOIN Customer c
+ON i.CustomerId = c.CustomerId
+GROUP BY 1,2 
+ORDER BY 3
+LIMIT 1 

@@ -1,0 +1,12 @@
+/*Query 2 - What is the best selling Album ? and what is it's total sales?
+and how many tracks does it contain ? */
+SELECT a.Title Album_Name,
+       COUNT(t.TrackId) songs,
+       SUM(il.Quantity * il.UnitPrice) tot
+FROM Invoice i
+JOIN InvoiceLine il ON i.InvoiceId = il.InvoiceId
+JOIN Track t ON t.TrackId = il.TrackId
+JOIN Album a ON a.AlbumId = t.AlbumId
+GROUP BY 1
+ORDER BY 3 DESC
+LIMIT 1
